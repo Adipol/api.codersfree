@@ -2,12 +2,23 @@
 
 namespace App\Models;
 
+use App\Traits\ApiTrait;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
+
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory, ApiTrait;
+
+    protected $fillable = ['name', 'slug'];
+
+    protected $allowIncluded = ['posts', 'posts.user'];
+    protected $allowFilter = ['id', 'name', 'slug'];
+    protected $allowSort = ['id', 'name', 'slug'];
+
 
     //Relación uno a muchos inversa
     public function posts()
