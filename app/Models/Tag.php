@@ -10,7 +10,7 @@ class Tag extends Model
 {
     use HasFactory, ApiTrait;
 
-    //Relacion muchos a muchos
+    //Relación muchos a muchos
     public function posts()
     {
         return $this->belongsToMany(Post::class);
